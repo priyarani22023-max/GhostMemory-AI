@@ -1,0 +1,6 @@
+{
+  "name": "GhostMemory AI — Where Memories Never Die",
+  "description": "Atmospheric Halloween and remembrance storytelling powered by open-weight Gemma models on Cloudflare Workers AI and Netlify.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

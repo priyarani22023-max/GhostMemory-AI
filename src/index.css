@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-deep: #08090d;
+    --bg-card: #10121a;
+    --bg-card-hover: #161924;
+    --border-gold: rgba(212, 175, 55, 0.16);
+    --border-gold-hover: rgba(245, 158, 11, 0.4);
+    --gold-glow: rgba(245, 158, 11, 0.15);
+    --candle-gold: #f59e0b;
+    --candle-flame: #fbbf24;
+    --mystic-purple: #9333ea;
+    --ivory-text: #f5f0e6;
+    --ash-muted: #a1a1aa;
+  }
+
+  body {
+    background-color: var(--bg-deep);
+    color: var(--ivory-text);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  .font-display {
+    font-family: 'Cinzel', Georgia, serif;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08090d;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Atmospheric candlelight & mist animations */
+@keyframes candleFlicker {
+  0%, 100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 10px rgba(245, 158, 11, 0.6)) drop-shadow(0 0 20px rgba(245, 158, 11, 0.3));
+  }
+  25% {
+    transform: scale(1.04, 0.98) translate(-0.5px, -1px);
+    opacity: 0.88;
+    filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.7)) drop-shadow(0 0 24px rgba(245, 158, 11, 0.4));
+  }
+  50% {
+    transform: scale(0.97, 1.03) translate(0.5px, 0.5px);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(245, 158, 11, 0.65)) drop-shadow(0 0 22px rgba(245, 158, 11, 0.35));
+  }
+  75% {
+    transform: scale(1.02, 0.96) translate(-1px, 0);
+    opacity: 0.92;
+    filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.5)) drop-shadow(0 0 16px rgba(245, 158, 11, 0.25));
+  }
+}
+
+@keyframes mistDrift {
+  0% {
+    transform: translateX(-5%) translateY(0);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateX(5%) translateY(-8px);
+    opacity: 0.28;
+  }
+  100% {
+    transform: translateX(-5%) translateY(0);
+    opacity: 0.15;
+  }
+}
+
+@keyframes pulseSubtle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.65; }
+}
+
+.candle-glow-flame {
+  animation: candleFlicker 3.2s ease-in-out infinite;
+}
+
+.mist-drift-layer {
+  animation: mistDrift 18s ease-in-out infinite;
+}
+
+.subtle-pulse {
+  animation: pulseSubtle 6s ease-in-out infinite;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .candle-glow-flame,
+  .mist-drift-layer,
+  .subtle-pulse {
+    animation: none !important;
+  }
+}
+
+/* Parchment and reader styles */
+.parchment-reader {
+  background: radial-gradient(circle at 50% 0%, #151822 0%, #0d0f17 100%);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 35px -5px rgba(245, 158, 11, 0.05);
+}
+
+.parchment-gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.parchment-gold-border:hover {
+  border-color: rgba(245, 158, 11, 0.38);
+  box-shadow: 0 4px 20px -2px rgba(245, 158, 11, 0.1);
+}
